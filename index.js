@@ -1,27 +1,4 @@
-const store = {
-    bookmarks: [
-      {
-        id: 'x56w',
-        title: 'Title 1',
-        rating: 3,
-        url: 'http://www.title1.com',
-        description: 'lorem ipsum dolor sit',
-        expanded: false
-      },
-      {
-        id: '6ffw',
-        title: 'Title 2',
-        rating: 5,
-        url: 'http://www.title2.com',
-        description: 'dolorum tempore deserunt',
-        expanded: false
-      } 
-      
-    ],
-    adding: false,
-    error: null,
-    filter: 0
-  };
+
 
 /*
 As a user:
@@ -49,47 +26,7 @@ I can select from a dropdown (a <select> element) a "minimum rating" to filter t
 */
 
 
-let acc = document.getElementsByClassName("accordion");
-let i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
-}
-
-$(document).ready(function(){
-  $("li").mouseover(function(){
-    let current = $(this);
-    $("li").each(function(index){
-      $(this).addClass("hovered-stars");
-      if(index === current.index()){
-        return false;
-      }
-    });
-  });
-  $("li").mouseleave(function(){
-    $("li").removeClass("hovered-stars");
-  });
-  $("li").click(function(){
-    $("li").removeClass("clicked-stars");
-    $(".hovered-stars").addClass("clicked-stars");
-  });
-});
-
-function main() {
-
-}
 
 
 /*
@@ -116,3 +53,30 @@ Follow a11y best practices
 
 Refer back to the accessibility checklist and the lesson on forms
 */
+
+
+
+
+
+
+import store from './store.js';
+import api from './api.js';
+import bookmarks from './bookmarks.js';
+
+const main = function () {
+  api.getItems()
+    .then(items => {
+      store.error = 0;
+      items.forEach((item) => store.addBookmark(item));
+      bookmarks.renderPage();
+    }).catch(err => {
+      console.error(err);
+      store.error = 1;
+      store.errorMessage = err.message;
+      bookmarks.renderPage();
+    });
+
+  bookmarks.bindEventListeners();
+};
+
+$(main);
