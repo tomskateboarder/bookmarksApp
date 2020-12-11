@@ -89,7 +89,7 @@ ul {
 }
 
 .star-inner {
-  background-image: url('media/star_icon_small.png');
+  background-image: url('media/full-star.png');
   background-size: contain;
   background-repeat: no-repeat;
   width: 18px;
@@ -234,7 +234,7 @@ ul {
 
 .star {
   display: flex;
- 
+  background-image: url('media/transparent-star.png');
   vertical-align: middle;
   background-size: contain;
   background-repeat: no-repeat;

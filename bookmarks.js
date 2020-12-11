@@ -186,7 +186,7 @@ function generateCreateOrEditBookmark(bookmark) {
         ${formString}
             <section class="add-upper-container" role="URL entry">
                     <label for="add-input">${headerString}</label>
-                    <input type="text" name="url" class="js-add-input" placeholder="https://www.example.com" ${urlString} required>
+                    <input type="text" name="url" id="add-input" class="js-add-input" placeholder="https://www.example.com" ${urlString} required>
             </section>
             <section class="add-lower-container" role="lower controls">
                 <div class="add-inner-top" role="title entry">
