@@ -25,7 +25,7 @@ function generateMainPage(bookmark) {
 
         filteredHtml = `
             <select name="filter-menu" class="js-filter-menu">
-                <option disabled>Filter By:</option>
+                <option disabled><label for="filter-menu">Filter By:</label></option>
             `;
 // loop
         for(let i = 1; i <= 5; i++) {
@@ -44,12 +44,14 @@ function generateMainPage(bookmark) {
 
         filteredHtml = `
             <select name="filter-menu" class="js-filter-menu">
+            <label for="js-filter-menu">
                 <option disabled selected>Filter By:</option>
                 <option value="1">1+ Stars</option>
                 <option value="2">2+ Stars</option>
                 <option value="3">3+ Stars</option>
                 <option value="4">4+ Stars</option>
                 <option value="5">5+ Stars</option>
+                </label>
             </select>
         `;
     }
@@ -120,12 +122,13 @@ function generateMainPage(bookmark) {
     // add bookmark
     let mainStructure = `
         <section class="main-container">
-            <section class="upper-container" role="menu">
+            <section class="upper-container" role="menuitem">
                 <button class="new-button"><label for="new-button">+ New</label></button>
                 ${filteredHtml}
             </section>
             <ul class="lower-container" role="tablist">
                 ${bookmarkStructure}
+                
             </ul>
         </section>
         <section class="js-error-message hidden" role="errorhandler"><label for="js-error-message hidden">ERROR: ${store.errorMessage} </label></section>
