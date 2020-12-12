@@ -121,14 +121,14 @@ function generateMainPage(bookmark) {
     let mainStructure = `
         <section class="main-container">
             <section class="upper-container" role="menu">
-                <button class="new-button">+ New</button>
+                <button class="new-button"><label for="new-button">+ New</label></button>
                 ${filteredHtml}
             </section>
             <ul class="lower-container" role="tablist">
                 ${bookmarkStructure}
             </ul>
         </section>
-        <section class="js-error-message hidden" role="errorhandler">ERROR: ${store.errorMessage} </section>
+        <section class="js-error-message hidden" role="errorhandler"><label for="js-error-message hidden">ERROR: ${store.errorMessage} </label></section>
         `;
 
 
@@ -145,7 +145,7 @@ function generateCreateOrEditBookmark(bookmark) {
     let descriptionString = ""; 
     let rating = -1; 
     let ratingHtmlString = ""; 
-    let buttonString = `<button type="submit" class="create-button">Create</button>`; 
+    let buttonString = `<button type="submit" class="create-button"><label for="create-button">Create</label></button>`; 
     let formString = '<form class="add-form" role="form">'; 
 
     // conditional for editing
@@ -155,7 +155,7 @@ function generateCreateOrEditBookmark(bookmark) {
         urlString = `value="${bookmark.url}"`; 
         
         rating = bookmark.rating; 
-        buttonString = `<button type="submit" class="js-edit-button">Edit</button>`; 
+        buttonString = `<button type="submit" class="js-edit-button"><label for="js-edit-button">Edit</label></button>`; 
         formString = '<form class="edit-form" role="form">'; 
 
         // conditional for description
